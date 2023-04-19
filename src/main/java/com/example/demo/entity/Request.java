@@ -20,7 +20,7 @@ public class Request implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private Long id;
+    private Integer id;
 
     String name;
 }

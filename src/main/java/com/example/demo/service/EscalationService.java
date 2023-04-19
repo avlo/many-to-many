@@ -22,7 +22,7 @@ public class EscalationService {
         escalationRepository.save(escalation);
     }
 
-    public Optional<Escalation> findById(Long id) {
+    public Optional<Escalation> findById(Integer id) {
         return escalationRepository.findById(id);
     }
 }
