@@ -9,3 +9,8 @@ CREATE TABLE request (
                             name VARCHAR(128) NOT NULL,
                             PRIMARY KEY (id)
 );
+
+CREATE TABLE escalation_request (
+                         escalation_id   INTEGER,
+                         request_id   INTEGER
+);

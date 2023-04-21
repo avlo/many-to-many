@@ -18,21 +18,25 @@ class DemoApplicationTests {
 	EscalationService escalationService;
 
 	@Test
-	void testExecution() {
-		System.out.println("1111111111111");
-	}
-
-	@Test
-	void saveEscalationWithRequests() {
+	void saveEscalation() {
 		Escalation escalation = new Escalation();
 		escalation.setName("ESCALATION 666");
 //		escalation.setId(6L);
 		escalationService.save(escalation);
 	}
 
+	void saveEscalationRequest() {
+
+	}
+
 	@Test
 	void getEscalation() {
 		Optional<Escalation> e1 = escalationService.findById(1);
+		System.out.println("3333333333333");
+		System.out.println("3333333333333");
+		System.out.println("e1: " + e1.get());
+		System.out.println("3333333333333");
+		System.out.println("3333333333333");
 		assertEquals(e1.get().getName(), "ESCALATION 1");
 	}
 

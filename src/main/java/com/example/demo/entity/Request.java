@@ -10,17 +10,12 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Data
 @Entity
 public class Request implements Serializable {
-
-//    @ManyToMany
-//    @JoinTable(
-//            name = "request_escalation",
-//            joinColumns = @JoinColumn(name = "request_id"),
-//            inverseJoinColumns = @JoinColumn(name = "escalation_id"))
-//    Set<Escalation> escalations;
-
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @OneToOne(mappedBy = "request")
+    Escalation escalation;
 
     String name;
 }

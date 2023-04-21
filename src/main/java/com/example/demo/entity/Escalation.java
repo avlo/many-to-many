@@ -2,23 +2,24 @@ package com.example.demo.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Data
 @Entity
 public class Escalation implements Serializable {
-    private static final long serialVersionUID = -2147468513335906679L;
-    //    @ManyToMany(mappedBy = "escalations")
-//    Set<Request> requests;
-//    @Id
-//    @GeneratedValue(strategy = AUTO)
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Integer id;
 
-    String name;
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinTable(name = "request",
+      joinColumns =
+          { @JoinColumn(name = "escalation_id", referencedColumnName = "id") },
+      inverseJoinColumns =
+          { @JoinColumn(name = "request_id", referencedColumnName = "id") })
+  private Request request;
+
+  String name;
 }
