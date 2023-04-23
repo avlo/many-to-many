@@ -7,30 +7,29 @@ import com.example.demo.entity.Request;
 import com.example.demo.service.EscalationService;
 import java.util.Optional;
 
-import com.example.demo.service.RequestService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class EscalationRequestTest {
-  public static final String PRE_EXISTING_REQUEST = "PRE-EXISTING REQUEST";
-  public static final String ESCALATION_WITH_REQUEST = "ESCALATION WITH REQUEST";
+  public static final String NEW_REQUEST = "NEW REQUEST";
+  public static final String NEW_ESCALATION_WITH = "NEW ESCALATION WITH ";
   @Autowired
   EscalationService escalationService;
 
   @Test
   void saveEscalationRequest() {
-    Request preExistingRequest = new Request();
-    preExistingRequest.setName(PRE_EXISTING_REQUEST);
+    Request newRequest = new Request();
+    newRequest.setName(NEW_REQUEST);
 
     Escalation escalation = new Escalation();
-    escalation.setName(ESCALATION_WITH_REQUEST);
-    escalation.setRequest(preExistingRequest);
+    escalation.setName(NEW_ESCALATION_WITH + newRequest.getName());
+    escalation.setRequest(newRequest);
 
     Escalation saved = escalationService.save(escalation);
-    Optional<Escalation> checkSaved = escalationService.findById(saved.getId());
-    assertEquals(checkSaved.get().getName(), ESCALATION_WITH_REQUEST);
-    assertEquals(checkSaved.get().getRequest().getName(), PRE_EXISTING_REQUEST);
+    Optional<Escalation> checkSavedEscalation = escalationService.findById(saved.getId());
+    assertEquals(checkSavedEscalation.get().getName(), NEW_ESCALATION_WITH + NEW_REQUEST);
+    assertEquals(checkSavedEscalation.get().getRequest().getName(), NEW_REQUEST);
   }
 }
