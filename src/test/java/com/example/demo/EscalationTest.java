@@ -5,23 +5,21 @@ import com.example.demo.service.EscalationService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.annotation.Resource;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
-class DemoApplicationTests {
+class EscalationTest {
 	@Autowired
 	EscalationService escalationService;
 
 	@Test
 	void saveEscalation() {
 		Escalation escalation = new Escalation();
-		escalation.setName("ESCALATION 666");
+		escalation.setName("ESCALATION 777");
 		escalationService.save(escalation);
 	}
 
