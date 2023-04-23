@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class EscalationRequestTest {
+public class NewEscalationNewRequestTest {
   public static final String NEW_REQUEST = "NEW REQUEST";
   public static final String NEW_ESCALATION_WITH = "NEW ESCALATION WITH ";
   @Autowired
