@@ -34,10 +34,6 @@ class RequestTest {
 		assertEquals(checkSaved.get().getName(), "REQUEST 666");
 	}
 
-	void saveEscalationRequest() {
-
-	}
-
 	@Test
 	void getExistingRequest() {
 		Optional<Request> e1 = requestService.findById(1);

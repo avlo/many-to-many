@@ -12,19 +12,19 @@ import java.util.Optional;
 
 @Service
 public class RequestService {
-    private final RequestRepository requestRepository;
+  private final RequestRepository requestRepository;
 
-    @Autowired
-    public RequestService(RequestRepository requestRepository) {
-        this.requestRepository = requestRepository;
-    }
+  @Autowired
+  public RequestService(RequestRepository requestRepository) {
+    this.requestRepository = requestRepository;
+  }
 
-    @Transactional
-    public Request save(Request request) {
-        return requestRepository.save(request);
-    }
+  @Transactional
+  public Request save(Request request) {
+    return requestRepository.save(request);
+  }
 
-    public Optional<Request> findById(Integer id) {
-        return requestRepository.findById(id);
-    }
+  public Optional<Request> findById(Integer id) {
+    return requestRepository.findById(id);
+  }
 }

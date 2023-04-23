@@ -1,18 +1,28 @@
-package com.example.demo.service;
+package com.example.demo;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.example.demo.entity.Escalation;
 import com.example.demo.entity.Request;
+import com.example.demo.service.EscalationService;
 import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
-public class EscalationRequestFunctionalNick {
+import com.example.demo.service.RequestService;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+public class EscalationRequestTest {
   public static final String PRE_EXISTING_REQUEST = "PRE-EXISTING REQUEST";
   public static final String ESCALATION_WITH_REQUEST = "ESCALATION WITH REQUEST";
   @Autowired
-  public EscalationRequestFunctionalNick(
-      EscalationService escalationService, RequestService requestService) {
+  EscalationService escalationService;
+  @Autowired
+  RequestService requestService;
+
+  @Test
+  void saveEscalationRequest() {
     Request preExistingRequest = new Request();
     preExistingRequest.setName(PRE_EXISTING_REQUEST);
 //    Request savedRequest = requestService.save(preExistingRequest);
@@ -23,11 +33,7 @@ public class EscalationRequestFunctionalNick {
 
     Escalation saved = escalationService.save(escalation);
     Optional<Escalation> checkSaved = escalationService.findById(saved.getId());
-    System.out.println("11111111111111111");
-    System.out.println("11111111111111111");
-    System.out.println("escalation: " + checkSaved.get().getName());
-    System.out.println("request   : " + checkSaved.get().getRequest().getName());
-    System.out.println("11111111111111111");
-    System.out.println("11111111111111111");
+    assertEquals(checkSaved.get().getName(), ESCALATION_WITH_REQUEST);
+    assertEquals(checkSaved.get().getRequest().getName(), PRE_EXISTING_REQUEST);
   }
 }

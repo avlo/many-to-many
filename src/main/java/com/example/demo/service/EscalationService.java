@@ -10,19 +10,19 @@ import java.util.Optional;
 
 @Service
 public class EscalationService {
-    private final EscalationRepository escalationRepository;
+  private final EscalationRepository escalationRepository;
 
-    @Autowired
-    public EscalationService(EscalationRepository escalationRepository) {
-        this.escalationRepository = escalationRepository;
-    }
+  @Autowired
+  public EscalationService(EscalationRepository escalationRepository) {
+    this.escalationRepository = escalationRepository;
+  }
 
-    @Transactional
-    public Escalation save(Escalation escalation) {
-        return escalationRepository.save(escalation);
-    }
+  @Transactional
+  public Escalation save(Escalation escalation) {
+    return escalationRepository.save(escalation);
+  }
 
-    public Optional<Escalation> findById(Integer id) {
-        return escalationRepository.findById(id);
-    }
+  public Optional<Escalation> findById(Integer id) {
+    return escalationRepository.findById(id);
+  }
 }

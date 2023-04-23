@@ -32,10 +32,6 @@ class EscalationTest {
 		assertEquals(checkSaved.get().getName(), "ESCALATION 666");
 	}
 
-	void saveEscalationRequest() {
-
-	}
-
 	@Test
 	void getExistingEscalation() {
 		Optional<Escalation> e1 = escalationService.findById(1);

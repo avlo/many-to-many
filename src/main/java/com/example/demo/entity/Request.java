@@ -10,12 +10,12 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Data
 @Entity
 public class Request implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
-    @OneToOne(mappedBy = "request")
-    Escalation escalation;
+  @OneToOne(mappedBy = "request")
+  Escalation escalation;
 
-    String name;
+  String name;
 }
