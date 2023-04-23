@@ -18,8 +18,8 @@ public class EscalationService {
     }
 
     @Transactional
-    public void save(Escalation escalation) {
-        escalationRepository.save(escalation);
+    public Escalation save(Escalation escalation) {
+        return escalationRepository.save(escalation);
     }
 
     public Optional<Escalation> findById(Integer id) {

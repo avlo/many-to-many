@@ -22,8 +22,16 @@ class DemoApplicationTests {
 	void saveEscalation() {
 		Escalation escalation = new Escalation();
 		escalation.setName("ESCALATION 666");
-//		escalation.setId(6L);
 		escalationService.save(escalation);
+	}
+
+	@Test
+	void getNewlySavedEscalation() {
+		Escalation escalation = new Escalation();
+		escalation.setName("ESCALATION 666");
+		Escalation saved = escalationService.save(escalation);
+		Optional<Escalation> checkSaved = escalationService.findById(saved.getId());
+		assertEquals(checkSaved.get().getName(), "ESCALATION 666");
 	}
 
 	void saveEscalationRequest() {
@@ -31,7 +39,7 @@ class DemoApplicationTests {
 	}
 
 	@Test
-	void getEscalation() {
+	void getExistingEscalation() {
 		Optional<Escalation> e1 = escalationService.findById(1);
 		System.out.println("e1: " + e1.get().getName());
 		assertEquals(e1.get().getName(), "ESCALATION 1");
