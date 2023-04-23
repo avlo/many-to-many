@@ -18,14 +18,11 @@ public class EscalationRequestTest {
   public static final String ESCALATION_WITH_REQUEST = "ESCALATION WITH REQUEST";
   @Autowired
   EscalationService escalationService;
-  @Autowired
-  RequestService requestService;
 
   @Test
   void saveEscalationRequest() {
     Request preExistingRequest = new Request();
     preExistingRequest.setName(PRE_EXISTING_REQUEST);
-//    Request savedRequest = requestService.save(preExistingRequest);
 
     Escalation escalation = new Escalation();
     escalation.setName(ESCALATION_WITH_REQUEST);
