@@ -11,7 +11,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 public class Request implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @OneToOne(mappedBy = "request")

@@ -5,6 +5,7 @@ import com.example.demo.service.EscalationService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.util.Optional;
@@ -32,11 +33,7 @@ class DemoApplicationTests {
 	@Test
 	void getEscalation() {
 		Optional<Escalation> e1 = escalationService.findById(1);
-		System.out.println("3333333333333");
-		System.out.println("3333333333333");
-		System.out.println("e1: " + e1.get());
-		System.out.println("3333333333333");
-		System.out.println("3333333333333");
+		System.out.println("e1: " + e1.get().getName());
 		assertEquals(e1.get().getName(), "ESCALATION 1");
 	}
 

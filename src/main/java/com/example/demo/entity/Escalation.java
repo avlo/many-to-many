@@ -10,11 +10,11 @@ import java.util.Set;
 @Entity
 public class Escalation implements Serializable {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinTable(name = "request",
+  @JoinTable(name = "escalation_request",
       joinColumns =
           { @JoinColumn(name = "escalation_id", referencedColumnName = "id") },
       inverseJoinColumns =
