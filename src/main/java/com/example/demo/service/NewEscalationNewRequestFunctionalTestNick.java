@@ -13,20 +13,20 @@ public class NewEscalationNewRequestFunctionalTestNick {
   public static final String NEW_ESCALATION_WITH = "NEW ESCALATION WITH ";
   @Autowired
   public NewEscalationNewRequestFunctionalTestNick(EscalationService escalationService) {
-//    Request newRequest = new Request();
-//    newRequest.setName(NEW_REQUEST);
-//
-//    Escalation escalation = new Escalation();
-//    escalation.setName(NEW_ESCALATION_WITH + newRequest.getName());
-//    escalation.setRequest(newRequest);
-//
-//    Escalation saved = escalationService.save(escalation);
-//    Optional<Escalation> checkSaved = escalationService.findById(saved.getId());
-//    System.out.println("11111111111111111");
-//    System.out.println("11111111111111111");
-//    System.out.println("escalation: " + checkSaved.get().getName());
-//    System.out.println("request   : " + checkSaved.get().getRequest().getName());
-//    System.out.println("11111111111111111");
-//    System.out.println("11111111111111111");
+    Request newRequest = new Request();
+    newRequest.setName(NEW_REQUEST);
+
+    Escalation escalation = new Escalation();
+    escalation.setName(NEW_ESCALATION_WITH + newRequest.getName());
+    escalation.setRequest(newRequest);
+
+    Escalation saved = escalationService.save(escalation);
+    Optional<Escalation> checkSaved = escalationService.findById(saved.getId());
+    System.out.println("11111111111111111");
+    System.out.println("11111111111111111");
+    System.out.println("escalation: " + checkSaved.get().getName());
+    System.out.println("request   : " + checkSaved.get().getRequest().getName());
+    System.out.println("11111111111111111");
+    System.out.println("11111111111111111");
   }
 }
