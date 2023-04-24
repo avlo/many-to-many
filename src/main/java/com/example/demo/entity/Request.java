@@ -14,7 +14,7 @@ public class Request implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @OneToOne(mappedBy = "request")
+  @OneToOne(mappedBy = "request", optional = true)
   Escalation escalation;
 
   String name;

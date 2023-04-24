@@ -1,14 +1,12 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.Escalation;
 import com.example.demo.entity.Request;
-import com.example.demo.repository.EscalationRepository;
 import com.example.demo.repository.RequestRepository;
+import com.sun.istack.NotNull;
+import java.util.Optional;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.util.Optional;
 
 @Service
 public class RequestService {
@@ -20,7 +18,7 @@ public class RequestService {
   }
 
   @Transactional
-  public Request save(Request request) {
+  public Request save(@NotNull Request request) {
     return requestRepository.save(request);
   }
 
