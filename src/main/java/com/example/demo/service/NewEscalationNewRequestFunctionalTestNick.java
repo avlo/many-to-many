@@ -11,8 +11,12 @@ import org.springframework.stereotype.Service;
 public class NewEscalationNewRequestFunctionalTestNick {
   public static final String NEW_REQUEST = "NEW REQUEST";
   public static final String NEW_ESCALATION_WITH = "NEW ESCALATION WITH ";
+
+  private final EscalationService escalationService;
+
   @Autowired
   public NewEscalationNewRequestFunctionalTestNick(EscalationService escalationService) {
+    this.escalationService = escalationService;
     Request newRequest = new Request();
     newRequest.setName(NEW_REQUEST);
 
@@ -20,8 +24,8 @@ public class NewEscalationNewRequestFunctionalTestNick {
     escalation.setName(NEW_ESCALATION_WITH + newRequest.getName());
     escalation.setRequest(newRequest);
 
-    Escalation saved = escalationService.save(escalation);
-    Optional<Escalation> checkSaved = escalationService.findById(saved.getId());
+    Escalation saved = this.escalationService.save(escalation);
+    Optional<Escalation> checkSaved = this.escalationService.findById(saved.getId());
     System.out.println("11111111111111111");
     System.out.println("11111111111111111");
     System.out.println("escalation: " + checkSaved.get().getName());
