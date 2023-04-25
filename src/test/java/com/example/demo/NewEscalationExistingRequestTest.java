@@ -2,12 +2,12 @@ package com.example.demo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.example.demo.entity.Escalation;
-import com.example.demo.entity.Request;
-import com.example.demo.service.EscalationService;
+import com.example.demo.entity.Escalationnick;
+import com.example.demo.entity.Requestnick;
+import com.example.demo.service.EscalationnickService;
+import com.example.demo.service.RequestnickService;
 import java.util.Optional;
 
-import com.example.demo.service.RequestService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,23 +17,23 @@ public class NewEscalationExistingRequestTest {
   public static final String EXISTING_REQUEST = "EXISTING REQUEST";
   public static final String NEW_ESCALATION_WITH = "NEW ESCALATION WITH ";
   @Autowired
-  EscalationService escalationService;
+  EscalationnickService escalationnickService;
   @Autowired
-  RequestService requestService;
+  RequestnickService requestnickService;
 
   @Test
   void saveNewEscalationExistingRequest() {
-    Request newRequest = new Request();
-    newRequest.setName(EXISTING_REQUEST);
-    Request existingRequest = requestService.save(newRequest);
+    Requestnick newRequestnick = new Requestnick();
+    newRequestnick.setName(EXISTING_REQUEST);
+    Requestnick existingRequestnick = requestnickService.save(newRequestnick);
 
-    Escalation escalation = new Escalation();
-    escalation.setName(NEW_ESCALATION_WITH + existingRequest.getName());
-    escalation.setRequest(existingRequest);
+    Escalationnick escalationNick = new Escalationnick();
+    escalationNick.setName(NEW_ESCALATION_WITH + existingRequestnick.getName());
+    escalationNick.setRequestnick(existingRequestnick);
 
-    Escalation saved = escalationService.save(escalation);
-    Optional<Escalation> checkSavedEscalation = escalationService.findById(saved.getId());
+    Escalationnick saved = escalationnickService.save(escalationNick);
+    Optional<Escalationnick> checkSavedEscalation = escalationnickService.findById(saved.getId());
     assertEquals(checkSavedEscalation.get().getName(), NEW_ESCALATION_WITH + EXISTING_REQUEST);
-    assertEquals(checkSavedEscalation.get().getRequest().getName(), EXISTING_REQUEST);
+    assertEquals(checkSavedEscalation.get().getRequestnick().getName(), EXISTING_REQUEST);
   }
 }

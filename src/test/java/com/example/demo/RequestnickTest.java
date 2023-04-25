@@ -1,9 +1,7 @@
 package com.example.demo;
 
-import com.example.demo.entity.Escalation;
-import com.example.demo.entity.Request;
-import com.example.demo.service.EscalationService;
-import com.example.demo.service.RequestService;
+import com.example.demo.entity.Requestnick;
+import com.example.demo.service.RequestnickService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,36 +12,36 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
-class RequestTest {
+class RequestnickTest {
 	@Autowired
-	RequestService requestService;
+	RequestnickService requestnickService;
 
 	@Test
 	void saveEscalation() {
-		Request request = new Request();
-		request.setName("REQUEST 777");
-		requestService.save(request);
+		Requestnick requestNick = new Requestnick();
+		requestNick.setName("REQUEST 777");
+		requestnickService.save(requestNick);
 	}
 
 	@Test
 	void getNewlySavedEscalation() {
-		Request request = new Request();
-		request.setName("REQUEST 666");
-		Request saved = requestService.save(request);
-		Optional<Request> checkSaved = requestService.findById(saved.getId());
+		Requestnick requestNick = new Requestnick();
+		requestNick.setName("REQUEST 666");
+		Requestnick saved = requestnickService.save(requestNick);
+		Optional<Requestnick> checkSaved = requestnickService.findById(saved.getId());
 		assertEquals(checkSaved.get().getName(), "REQUEST 666");
 	}
 
 	@Test
 	void getExistingRequest() {
-		Optional<Request> e1 = requestService.findById(1);
+		Optional<Requestnick> e1 = requestnickService.findById(1);
 		System.out.println("e1: " + e1.get().getName());
 		assertEquals(e1.get().getName(), "REQUEST 1");
 	}
 
 	@Test
 	void getRequestException() {
-		Optional<Request> e1 = requestService.findById(1);
+		Optional<Requestnick> e1 = requestnickService.findById(1);
 		assertNotEquals(e1.get().getName(), "REQUEST 2");
 	}
 

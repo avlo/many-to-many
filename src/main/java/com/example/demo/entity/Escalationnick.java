@@ -4,11 +4,11 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
 @Data
 @Entity
-public class Escalation implements Serializable {
+//@Table(name = "escalationnick")
+public class Escalationnick implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
@@ -17,12 +17,12 @@ public class Escalation implements Serializable {
 //  @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE, optional = false)
 //@OneToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL, optional = false)
   @OneToOne(cascade = CascadeType.MERGE, optional = false)
-  @JoinTable(name = "escalation_request",
+  @JoinTable(name = "escalationnick_requestnick",
       joinColumns =
-          { @JoinColumn(name = "escalation_id", referencedColumnName = "id") },
+          { @JoinColumn(name = "escalationnick_id", referencedColumnName = "id") },
       inverseJoinColumns =
-          { @JoinColumn(name = "request_id", referencedColumnName = "id", nullable = false) })
-  private Request request;
+          { @JoinColumn(name = "requestnick_id", referencedColumnName = "id", nullable = false) })
+  private Requestnick requestnick;
 
   String name;
 }
