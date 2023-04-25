@@ -25,4 +25,8 @@ public class RequestnickService {
   public Optional<Requestnick> findById(Integer id) {
     return requestnickRepository.findById(id);
   }
+
+  public Requestnick findByName(String name) {
+    return requestnickRepository.findByName(name);
+  }
 }
