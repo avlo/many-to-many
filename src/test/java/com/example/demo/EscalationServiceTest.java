@@ -9,10 +9,9 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.dao.InvalidDataAccessApiUsageException;
 
 @SpringBootTest
-class EscalationTest {
+class EscalationServiceTest {
   @Autowired EscalationService escalationService;
 
   @Test
@@ -23,21 +22,16 @@ class EscalationTest {
   }
 
   @Test
-  void checkForMatch() {
+  void getExistingEscalation() {
     Optional<Collection<Escalation>> e1 = escalationService.findByEscalationId(111);
-    // check optional non-empty
-    assertTrue(e1.isPresent());
     // check collection for match
     assertTrue(e1.get().stream().anyMatch(x -> x.getEscalationId().equals(111)));
   }
 
   @Test
-  void checkForNoMatch() {
+  void checkForNoEscalationMatch() {
     Optional<Collection<Escalation>> e1 = escalationService.findByEscalationId(999);
-    // check optional is empty
-    Optional<Collection<Escalation>> empty = Optional.empty();
-    assertTrue(e1.isPresent());
-    // sanity check inside optional for collection & no-match
+    // check collection exists yet is empty
     assertTrue(!e1.get().stream().findAny().isPresent());
   }
 }
