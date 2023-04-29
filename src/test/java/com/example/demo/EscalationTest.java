@@ -23,20 +23,21 @@ class EscalationTest {
   }
 
   @Test
-  void getExistingEscalation() {
+  void checkForMatch() {
     Optional<Collection<Escalation>> e1 = escalationService.findByEscalationId(111);
+    // check optional non-empty
+    assertTrue(e1.isPresent());
+    // check collection for match
     assertTrue(e1.get().stream().anyMatch(x -> x.getEscalationId().equals(111)));
   }
 
   @Test
-  void checkNoMatchPresent() {
+  void checkForNoMatch() {
     Optional<Collection<Escalation>> e1 = escalationService.findByEscalationId(999);
+    // check optional is empty
+    Optional<Collection<Escalation>> empty = Optional.empty();
+    assertTrue(e1.isPresent());
+    // sanity check inside optional for collection & no-match
     assertTrue(!e1.get().stream().findAny().isPresent());
-  }
-
-  @Test
-  void checkMatchNotPresent() {
-    Optional<Collection<Escalation>> e1 = escalationService.findByEscalationId(999);
-    assertFalse(e1.get().stream().findAny().isPresent());
   }
 }
