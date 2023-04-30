@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.entity.Escalation;
+import com.example.demo.entity.Request;
 import com.example.demo.service.EscalationRequestService;
 import java.util.Collection;
 import java.util.Optional;
@@ -15,12 +16,22 @@ public class EscalationRequestServiceTest {
   EscalationRequestService escalationRequestService;
 
   @Test
-  void getEscalationRequest() {
+  void getEscalationsTest() {
     Optional<Collection<Escalation>> escalations = escalationRequestService.getEscalations(111);
     System.out.println("1111111111111111");
     System.out.println("1111111111111111");
     System.out.println(escalations.get());
     System.out.println("1111111111111111");
     System.out.println("1111111111111111");
+  }
+
+  @Test
+  void getEscalationRequestsTest() {
+    Collection<Request> escalations = escalationRequestService.getEscalationRequests(111);
+    System.out.println("222222222222222");
+    System.out.println("222222222222222");
+    System.out.println(escalations);
+    System.out.println("222222222222222");
+    System.out.println("222222222222222");
   }
 }
