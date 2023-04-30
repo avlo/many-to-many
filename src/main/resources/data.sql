@@ -1,13 +1,13 @@
-INSERT INTO request (request_id) VALUES (1);
-INSERT INTO request (request_id) VALUES (11);
-INSERT INTO request (request_id) VALUES (2);
-INSERT INTO request (request_id) VALUES (3);
-INSERT INTO request (request_id) VALUES (33);
-INSERT INTO request (request_id) VALUES (4);
+INSERT INTO request (request_id, name) VALUES ( 1, 'REQUEST 1');
+INSERT INTO request (request_id, name) VALUES (11, 'REQUEST 11');
+INSERT INTO request (request_id, name) VALUES ( 2, 'REQUEST 2');
+INSERT INTO request (request_id, name) VALUES ( 3, 'REQUEST 3');
+INSERT INTO request (request_id, name) VALUES (33, 'REQUEST 33');
+INSERT INTO request (request_id, name) VALUES ( 4, 'REQUEST 4');
 
-INSERT INTO escalation (escalation_id) VALUES (111);
-INSERT INTO escalation (escalation_id) VALUES (222);
-INSERT INTO escalation (escalation_id) VALUES (333);
+INSERT INTO escalation (escalation_id, name) VALUES (111, 'ESCALATION 111');
+INSERT INTO escalation (escalation_id, name) VALUES (222, 'ESCALATION 222');
+INSERT INTO escalation (escalation_id, name) VALUES (333, 'ESCALATION 333');
 -- INSERT INTO escalation (escalation_id) VALUES (444);
 -- INSERT INTO escalation (escalation_id) VALUES (555);
 

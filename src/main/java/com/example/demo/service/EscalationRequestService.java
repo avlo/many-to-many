@@ -2,7 +2,9 @@ package com.example.demo.service;
 
 import com.example.demo.entity.Escalation;
 import com.example.demo.entity.EscalationRequest;
+import com.example.demo.entity.Request;
 import com.example.demo.repository.EscalationRequestRepository;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +31,15 @@ public class EscalationRequestService {
 
   public Optional<Collection<Escalation>> getEscalations(Integer escalationId) {
     return escalationService.findByEscalationId(escalationId);
+  }
+
+  public Collection<Request> getEscalationRequests(Integer escalationId) {
+    Optional<Collection<EscalationRequest>> escalations = getEscalationRequestRecords(111);
+    Collection<Request> requests = new ArrayList<>();
+
+    for (EscalationRequest escalationRequest : escalations.get()) {
+      requests.add(requestService.findByRequestId(escalationRequest.getRequestId()).get());
+    }
+    return requests;
   }
 }
