@@ -35,6 +35,8 @@ public class EscalationRequestService {
 
   public Collection<Request> getEscalationRequests(Integer escalationId) {
     Optional<Collection<EscalationRequest>> escalations = getEscalationRequestRecords(111);
+
+    // TODO: refactor all below lines to more efficient retrieval
     Collection<Request> requests = new ArrayList<>();
 
     for (EscalationRequest escalationRequest : escalations.get()) {
