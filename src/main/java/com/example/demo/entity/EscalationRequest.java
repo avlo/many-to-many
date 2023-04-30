@@ -1,40 +1,43 @@
 package com.example.demo.entity;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
+import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import lombok.Data;
 
 @Data
 @Entity
-public class EntityRequest implements Serializable {
+public class EscalationRequest implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  @ManyToOne(cascade = CascadeType.MERGE, optional = false)
-  @JoinTable(name = "escalation_request",
-      joinColumns =
-          { @JoinColumn(name = "entityrequest_id", referencedColumnName = "id") },
-      inverseJoinColumns =
-          { @JoinColumn(name = "escalation_id", referencedColumnName = "id", nullable = false) })
-  private Request request;
+  private Integer escalationId;
+  private Integer requestId;
 
-  @ManyToMany(cascade = CascadeType.MERGE)
-  @JoinTable(name = "escalation_request",
-      joinColumns =
-          { @JoinColumn(name = "entityrequest_id", referencedColumnName = "id") },
-      inverseJoinColumns =
-          { @JoinColumn(name = "entity_id", referencedColumnName = "id", nullable = false) })
-
-  Escalation escalation;
-
+//  @EmbeddedId
+//  private EscalationRequestPK id;
+//
+//  @MapsId("escalationId")
+//  @ManyToOne
+//  private Escalation escalation;
+//
+//  @MapsId("requestId")
+//  @OneToOne
+//  private Request request;
+//
+//  @Embeddable
+//  @Data
+//  public class EscalationRequestPK implements Serializable {
+//    private static final long serialVersionUID = 1L;
+//    private Long escalationId;
+//    private Long requestId;
+//  }
 }
