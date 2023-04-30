@@ -18,6 +18,7 @@ public class EscalationServiceTest {
   void saveEscalation() {
     Escalation escalation = new Escalation();
     escalation.setEscalationId(444);
+    escalation.setName("ESCALATION 444");
     escalationService.save(escalation);
   }
 
