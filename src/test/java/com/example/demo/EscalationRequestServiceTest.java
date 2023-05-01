@@ -76,6 +76,7 @@ public class EscalationRequestServiceTest {
 
   @Test
   void checkNotSavePreexistingEscalationRequest() {
-//    assertTrue(false);
+    assertThrows(IllegalArgumentException.class, null,
+        "\n\n!!! NEEDS UNIT TEST !!!!\n\n");
   }
 }
