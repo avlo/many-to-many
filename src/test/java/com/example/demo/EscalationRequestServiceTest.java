@@ -75,6 +75,39 @@ public class EscalationRequestServiceTest {
   }
 
   @Test
+  void checkNewEscalationExistingRequestTest() {
+    Escalation e = new Escalation();
+    e.setEscalationId(888);
+    e.setName("ESCALATION 888");
+
+    Request r1 = new Request();
+    r1.setRequestId(8);
+    r1.setName("REQUEST 8");
+
+    Request r2 = new Request();
+    r2.setRequestId(88);
+    r2.setName("REQUEST 88");
+
+    Collection<Request> requests = new ArrayList<>();
+    requests.add(r1);
+    requests.add(r2);
+    escalationRequestService.save(e, requests);
+
+    assertTrue(escalationRequestService.getEscalationRequests(e.getEscalationId()).stream().anyMatch(request -> request.getRequestId().equals(8)));
+    assertTrue(escalationRequestService.getEscalationRequests(e.getEscalationId()).stream().anyMatch(request -> request.getRequestId().equals(88)));
+
+    Escalation e2 = new Escalation();
+    e2.setEscalationId(999);
+    e2.setName("ESCALATION 999");
+
+    escalationRequestService.save(e2, requests);
+
+    assertEquals(e2.getEscalationId(), 999);
+    assertTrue(escalationRequestService.getEscalationRequests(e2.getEscalationId()).stream().anyMatch(request -> request.getRequestId().equals(8)));
+    assertTrue(escalationRequestService.getEscalationRequests(e2.getEscalationId()).stream().anyMatch(request -> request.getRequestId().equals(88)));
+  }
+
+  @Test
   void checkNotSavePreexistingEscalationRequest() {
     assertThrows(IllegalArgumentException.class, null,
         "\n\n!!! NEEDS UNIT TEST !!!!\n\n");
