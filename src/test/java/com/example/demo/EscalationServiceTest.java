@@ -24,15 +24,15 @@ public class EscalationServiceTest {
 
   @Test
   void getExistingEscalation() {
-    Optional<Collection<Escalation>> e1 = escalationService.findByEscalationId(111);
+    Collection<Escalation> e1 = escalationService.findByEscalationId(111);
     // check collection for match
-    assertTrue(e1.get().stream().anyMatch(x -> x.getEscalationId().equals(111)));
+    assertTrue(e1.stream().anyMatch(x -> x.getEscalationId().equals(111)));
   }
 
   @Test
   void checkForNoEscalationMatch() {
-    Optional<Collection<Escalation>> e1 = escalationService.findByEscalationId(999);
+    Collection<Escalation> e1 = escalationService.findByEscalationId(999);
     // check collection exists yet is empty
-    assertTrue(!e1.get().stream().findAny().isPresent());
+    assertTrue(!e1.stream().findAny().isPresent());
   }
 }

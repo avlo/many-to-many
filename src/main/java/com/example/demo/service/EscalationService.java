@@ -3,8 +3,8 @@ package com.example.demo.service;
 import com.example.demo.entity.Escalation;
 import com.example.demo.repository.EscalationRepository;
 import com.sun.istack.NotNull;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class EscalationService {
     return escalationRepository.save(escalation);
   }
 
-  public Optional<Collection<Escalation>> findByEscalationId(Integer escalationId) {
-    return escalationRepository.findByEscalationId(escalationId);
+  public Collection<Escalation> findByEscalationId(Integer escalationId) {
+    return escalationRepository.findByEscalationId(escalationId).orElse(new ArrayList<>());
   }
 }
