@@ -14,7 +14,7 @@ CREATE TABLE request (
 
 CREATE TABLE escalation_request (
     id INTEGER NOT NULL AUTO_INCREMENT,
-    escalation_id INTEGER,
-    request_id INTEGER,
+    escalation_id INTEGER NOT NULL,
+    request_id INTEGER NOT NULL,
     PRIMARY KEY (id)
 );
