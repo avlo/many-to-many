@@ -27,8 +27,8 @@ public class EscalationServiceTest {
   @Order(2)
   void saveEscalation() {
     Escalation escalation = new Escalation();
-    escalation.setEscalationId(555);
-    escalation.setName("ESCALATION 555");
+    escalation.setEscalationId(444);
+    escalation.setName("ESCALATION 444");
     escalationService.save(escalation);
   }
 
