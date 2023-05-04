@@ -1,3 +1,7 @@
+-- drop table if exists escalation;
+-- drop table if exists request;
+-- drop table if exists escalation_request;
+
 CREATE TABLE escalation (
     id INT IDENTITY(1,1),
     escalation_id INTEGER NOT NULL,
